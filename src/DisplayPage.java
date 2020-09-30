@@ -39,55 +39,55 @@ public class DisplayPage {
 
         BufferedImage image_black = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
-        Graphics2D black = (Graphics2D) image_black.getGraphics();
+        Graphics2D img = (Graphics2D) image_black.getGraphics();
 
 
-        black.setBackground(Color.WHITE);
-        black.clearRect(0, 0, width, height);
-        black.setColor(Color.BLACK);
+        img.setBackground(Color.WHITE);
+        img.clearRect(0, 0, width, height);
+        img.setColor(Color.BLACK);
 
-        black.setFont(new Font("Arial", Font.PLAIN, 29));
+        img.setFont(new Font("Arial", Font.PLAIN, 29));
 
-        black.drawString(genre, 35, 62);
+        img.drawString(genre, 35, 62);
 
-        black.setFont(new Font("Arial", Font.PLAIN, 24));
-        black.drawString(title, 35, 130);
-        black.setFont(new Font("Arial", Font.PLAIN, 17));
-        black.drawString(description, 35, 170);
+        img.setFont(new Font("Arial", Font.PLAIN, 24));
+        img.drawString(title, 35, 130);
+        img.setFont(new Font("Arial", Font.PLAIN, 17));
+        img.drawString(description, 35, 170);
 
-//        black.drawImage(ImageIO.read(new File("imagen.png")), , 0, 0);
+//        img.drawImage(ImageIO.read(new File("imagen.png")), , 0, 0);
 
 //        logo
         try {
-            black.drawImage(ImageIO.read(new File("./src/assets/img/logo.herder.bmp")), 520 ,32, 40,40,null);
+            img.drawImage(ImageIO.read(new File("./src/assets/img/logo.herder.bmp")), 520 ,32, 40,40,null);
         } catch (IOException e) {
             System.out.println(e);
         }
 //        qrcode
         try {
-            black.drawImage(createQrCode(link), 350 ,150, 200,200,null);
+            img.drawImage(createQrCode(link), 350 ,150, 200,200,null);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 //        top
-        black.fillRect(20, 20, (width - 40), 3);
-        black.fillRect(20, 80, (width - 40), 3);
+        img.fillRect(20, 20, (width - 40), 3);
+        img.fillRect(20, 80, (width - 40), 3);
 //        bottom
-        black.fillRect(20, 400, (width - 40), 3);
+        img.fillRect(20, 400, (width - 40), 3);
 //        left
-        black.fillRect(20, 20, 3, 380);
+        img.fillRect(20, 20, 3, 380);
 //        right
-        black.fillRect(577, 20, 3, 380);
+        img.fillRect(577, 20, 3, 380);
 
-//        black.fillOval(halftwidth-5,height-27,10,10);
+//        img.fillOval(halftwidth-5,height-27,10,10);
 
-//        black.fillOval(halftwidth+5,height-27,10,10);
-//        black.fillOval(halftwidth-15,height-27,10,10);
+//        img.fillOval(halftwidth+5,height-27,10,10);
+//        img.fillOval(halftwidth-15,height-27,10,10);
 
-        black.fillOval(halfWidth - 25,height-27,10,10);
-        black.fillOval(halfWidth - 5,height-27,10,10);
-        black.fillOval(halfWidth + 15,height-27,10,10);
+        img.fillOval(halfWidth - 25,height-27,10,10);
+        img.fillOval(halfWidth - 5,height-27,10,10);
+        img.fillOval(halfWidth + 15,height-27,10,10);
 
 
         try {
