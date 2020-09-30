@@ -50,7 +50,25 @@ public class DisplayPage {
 
         black.drawString(genre, 35, 62);
 
+        black.setFont(new Font("Arial", Font.PLAIN, 24));
+        black.drawString(title, 35, 130);
+        black.setFont(new Font("Arial", Font.PLAIN, 17));
+        black.drawString(description, 35, 170);
+
 //        black.drawImage(ImageIO.read(new File("imagen.png")), , 0, 0);
+
+//        logo
+        try {
+            black.drawImage(ImageIO.read(new File("./src/assets/img/logo.herder.bmp")), 520 ,32, 40,40,null);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+//        qrcode
+        try {
+            black.drawImage(createQrCode(link), 350 ,150, 200,200,null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 //        top
         black.fillRect(20, 20, (width - 40), 3);
@@ -73,28 +91,26 @@ public class DisplayPage {
 
 
         try {
-            ImageIO.write(image_black, "bmp", new File("./src/dynamicAssets/pages/page."+ pageNumber +".bmp"));
+            ImageIO.write(image_black, "bmp", new File("./src/assets/dyn/page."+ pageNumber +".bmp"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void createQrCode(String url, String filename){
+    public BufferedImage createQrCode(String url){
         try {
             String qrCodeData = url;
-            String filePath = filename;
             String charset = "UTF-8";
             Map<EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap< EncodeHintType, ErrorCorrectionLevel >();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             BitMatrix matrix = new MultiFormatWriter().encode(
                     new String(qrCodeData.getBytes(charset), charset),
                     BarcodeFormat.QR_CODE, 200, 200, hintMap);
-            MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
-                    .lastIndexOf('.') + 1), new File(filePath));
-            System.out.println("QR Code image created successfully!");
+            return MatrixToImageWriter.toBufferedImage(matrix);
         } catch (Exception e) {
             System.err.println(e);
         }
+        return null;
     }
 
     @Override
