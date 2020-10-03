@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Crawler {
     ArrayList<HerderArticle> content = new ArrayList<>();
@@ -19,14 +20,17 @@ public class Crawler {
             e.printStackTrace();
         }
         StringBuilder description = new StringBuilder();
+        String url;
         if(doc != null) {
             Elements article = doc.select("div[itemprop=\"blogPost\"]");
             for (Element articleElement: article) {
                 description.setLength(0);
                 for (Element inner: articleElement.getElementsByTag("p")) {
-                    description.append(inner.html().replaceAll("<.*?>", "").replaceAll("&nbsp;", "").replaceAll("  Weiterlesen ...", ""));
+                    description.append(inner.html().replaceAll("<.*?>", "").replaceAll("&nbsp;", "").replaceAll(" {2}Weiterlesen ...", ""));
                 }
-                content.add(new HerderArticle( (articleElement.select("h2").select("a").html()), (description.toString()), ("https://herder-gymnasium-minden.de" + articleElement.select("h2").select("a").attr("href"))));
+                url =articleElement.select("h2").select("a").attr("href").split("&")[2];
+                url = "https://herder-gymnasium-minden.de/wbs/?view=article&" + url.substring(0,url.indexOf(':'));
+                content.add(new HerderArticle( (articleElement.select("h2").select("a").html()), (description.toString()), url));
             }
         }
     }

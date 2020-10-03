@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/qrcode e-ink display.iml" filepath="$PROJECT_DIR$/qrcode e-ink display.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qrcode_e-ink_display.iml" filepath="$PROJECT_DIR$/.idea/modules/qrcode_e-ink_display.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qrcode_e-ink_display.main.iml" filepath="$PROJECT_DIR$/.idea/modules/qrcode_e-ink_display.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/qrcode_e-ink_display.test.iml" filepath="$PROJECT_DIR$/.idea/modules/qrcode_e-ink_display.test.iml" />
     </modules>
   </component>
 </project>

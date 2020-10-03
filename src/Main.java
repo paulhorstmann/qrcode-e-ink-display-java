@@ -8,13 +8,11 @@ public class Main {
     public static void main(String[] args)  {
         ArrayList<DisplayPage> displayPages = new ArrayList<>();
         Crawler crawler = new Crawler();
-        HerderArticle localAticle;
+        HerderArticle localArticle;
         for (int i = 0; i < 6; i++) {
-            localAticle = crawler.getContent().get(i);
-            displayPages.add(new DisplayPage("Herder News", localAticle.getTitle(), localAticle.getDescription(), localAticle.getLink(), i+1, 6));
+            localArticle = crawler.getContent().get(i);
+            displayPages.add(new DisplayPage("Herder News", localArticle.getTitle(), localArticle.getDescription(), localArticle.getLink(), i+1, 6));
         }
-        for (DisplayPage page: displayPages) {
-            System.out.println(page.toString());
-        }
+        displayPages.forEach(System.out::println);
     }
 }
